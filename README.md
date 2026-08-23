@@ -4,6 +4,6 @@ Nova-Mind YouTube Analyzer is a Flask-based web application that analyzes YouTub
 
 
 
-# Configure the api key<br>
+# Configure the Youtube api key<br>
 <br>
 └─# export Api_Key="Api_key"
