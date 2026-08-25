@@ -22,9 +22,8 @@ youtube = build("youtube", "v3", developerKey=YOUTUBE_API_KEY) if YOUTUBE_API_KE
 sentiment_analyzer = SentimentIntensityAnalyzer()
 
 
-# =========================
+
 # SERVE WEBSITE
-# =========================
 
 @app.route("/")
 def home():
@@ -36,9 +35,7 @@ def script():
     return send_from_directory(".", "script.js")
 
 
-# =========================
 # YOUTUBE FUNCTIONS
-# =========================
 
 def extract_video_id(url):
     match = re.search(r"(?:v=|\/)([A-Za-z0-9_-]{11})", url)
@@ -374,41 +371,39 @@ def generate_smart_suggestions(
     suggestions = []
 
     suggestions.append(
-        f"🎥 Title idea: {title.split('|')[0].strip()} — EXPLAINED"
+        f" Title idea: {title.split('|')[0].strip()} — EXPLAINED"
     )
 
     suggestions.append(
-        "🎯 Hook suggestion: Start with a 10s teaser answering the core question."
+        " Hook suggestion: Start with a 10s teaser answering the core question."
     )
 
     if len(title) < 30:
 
         suggestions.append(
-            "⚠️ SEO: Title is short — add target keywords."
+            " SEO: Title is short — add target keywords."
         )
 
     if not tags:
 
         suggestions.append(
-            "🛑 Discovery: No tags found — add relevant tags."
+            " Discovery: No tags found — add relevant tags."
         )
 
     if engagement_rate < 2.0:
 
         suggestions.append(
-            "📉 Strategy: Low engagement — ask a direct call-to-action in the first comment."
+            " Strategy: Low engagement — ask a direct call-to-action in the first comment."
         )
 
     suggestions.append(
-        "💡 Repurpose: Create a Short from the best 15s segment."
+        " Repurpose: Create a Short from the best 15s segment."
     )
 
     return suggestions
 
 
-# =========================
 # ANALYZE API
-# =========================
 
 @app.route("/analyze", methods=["POST"])
 def analyze_video():
@@ -596,9 +591,7 @@ def analyze_video():
         }), 500
 
 
-# =========================
 # START SERVER
-# =========================
 
 if __name__ == "__main__":
 
